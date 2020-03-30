@@ -13,6 +13,6 @@ class ProductDetailScreen extends StatelessWidget {
         Provider.of<Products>(context, listen: false).findById(productId);
     return Scaffold(
       appBar: AppBar(title: Text(loadedProduct.title)),
-    );
+    ); 
   }
 }
