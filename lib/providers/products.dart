@@ -37,12 +37,12 @@ class Products with ChangeNotifier {
           'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     ),
   ];
-
   // var _showFavoritesOnly = false;
 
   List<Product> get items {
-    // if (_showFavoritesOnly)
+    // if (_showFavoritesOnly) {
     //   return _items.where((prodItem) => prodItem.isFavorite).toList();
+    // }
     return [..._items];
   }
 
@@ -55,23 +55,25 @@ class Products with ChangeNotifier {
   }
 
   // void showFavoritesOnly() {
-  //   _showFavoritesOnly=true;
+  //   _showFavoritesOnly = true;
   //   notifyListeners();
   // }
 
   // void showAll() {
-  //   _showFavoritesOnly=false;
+  //   _showFavoritesOnly = false;
   //   notifyListeners();
   // }
 
   void addProduct(Product product) {
     final newProduct = Product(
-        title: product.title,
-        description: product.description,
-        imageUrl: product.imageUrl,
-        price: product.price,
-        id: DateTime.now().toString());
+      title: product.title,
+      description: product.description,
+      price: product.price,
+      imageUrl: product.imageUrl,
+      id: DateTime.now().toString(),
+    );
     _items.add(newProduct);
+    // _items.insert(0, newProduct); // at the start of the list
     notifyListeners();
   }
 
@@ -80,14 +82,13 @@ class Products with ChangeNotifier {
     if (prodIndex >= 0) {
       _items[prodIndex] = newProduct;
       notifyListeners();
-    }
-    else {
+    } else {
       print('...');
     }
   }
 
-  void deleteProduct(String id){
-    _items.removeWhere((prod) => prod.id==id);
+  void deleteProduct(String id) {
+    _items.removeWhere((prod) => prod.id == id);
     notifyListeners();
   }
 }
